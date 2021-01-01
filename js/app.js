@@ -23,8 +23,19 @@ function calculateResults(e) {
         total_payment.value = (monthly * calculated_payments).toFixed(2);
         total_interest.value = ((monthly * calculated_payments) - principal).toFixed(2);
     } else {
-        console.log('error');
+        showError('Please check the entered information.');
     }
 
     e.preventDefault();
+}
+
+function showError(error) {
+    const err = document.createElement('div');
+    const card = document.querySelector('.card');
+    const heading = document.querySelector('.heading');
+
+    err.className = 'alert alert-danger';
+    err.appendChild(document.createTextNode(error));
+    
+    card.insertBefore(err, heading);
 }
