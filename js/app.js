@@ -32,8 +32,8 @@ function calculateResults() {
         total_payment.value = (monthly * calculated_payments).toFixed(2);
         total_interest.value = ((monthly * calculated_payments) - principal).toFixed(2);
 
-        document.querySelector('#loading').style.display = 'none';
         document.querySelector('#results').style.display = 'block';
+        document.querySelector('#loading').style.display = 'none';
     } else {
         showError('Please check the entered information.');
     }
