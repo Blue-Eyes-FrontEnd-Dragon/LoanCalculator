@@ -1,7 +1,16 @@
 // Listen for submit
-const form = document.querySelector('#loan-form').addEventListener('submit', calculateResults);
+const form = document.querySelector('#loan-form').addEventListener('submit', (e) => {
+    // Hide results
+    document.querySelector('#results').style.display = 'none';
+    // Show loader
+    document.querySelector('#loading').style.display = 'block';
 
-function calculateResults(e) {
+    setTimeout(calculateResults, 2000);
+
+    e.preventDefault();
+});
+
+function calculateResults() {
     const amount = document.querySelector('#amount');
     const interest = document.querySelector('#interest');
     const years = document.querySelector('#years');
@@ -22,11 +31,12 @@ function calculateResults(e) {
         monthly_payment.value = monthly.toFixed(2);
         total_payment.value = (monthly * calculated_payments).toFixed(2);
         total_interest.value = ((monthly * calculated_payments) - principal).toFixed(2);
+
+        document.querySelector('#loading').style.display = 'none';
+        document.querySelector('#results').style.display = 'block';
     } else {
         showError('Please check the entered information.');
     }
-
-    e.preventDefault();
 }
 
 function showError(error) {
