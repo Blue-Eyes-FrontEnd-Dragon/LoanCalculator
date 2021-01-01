@@ -40,6 +40,9 @@ function calculateResults() {
 }
 
 function showError(error) {
+    document.querySelector('#results').style.display = 'none';
+    document.querySelector('#loading').style.display = 'none';
+
     const err = document.createElement('div');
     const card = document.querySelector('.card');
     const heading = document.querySelector('.heading');
