@@ -38,4 +38,10 @@ function showError(error) {
     err.appendChild(document.createTextNode(error));
     
     card.insertBefore(err, heading);
+
+    setTimeout(clearError, 3000);
+}
+
+function clearError() {
+    document.querySelector('.alert').remove();
 }
